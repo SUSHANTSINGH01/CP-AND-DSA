@@ -1,3 +1,5 @@
+//https://www.codechef.com/CSNS21B/problems/DLTNODE
+
 #include <bits/stdc++.h>
 using namespace std;
 #define md 1000000007
