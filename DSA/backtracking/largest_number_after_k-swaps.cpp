@@ -1,30 +1,42 @@
-void findMaxUtil(string str, string &max, int k, int pos)
+class Solution
+{
+    public:
+    //Function to find the largest number after k swaps.
+    void solve(string str, string &ans, int k, int pos)
     {
         if(k == 0)
-            return;
+        return;
             
-        char maxm = str[pos];
-        for(int i = pos+1; i < str.length() ;i++)
+        char maxx=str[pos];
+        for(int i=pos+1;i<str.length();i++)
         {
-            if(maxm < str[i])
-                maxm = str[i];
+            if(maxx<str[i])
+            maxx=str[i];
         }
         
-        if(maxm != str[pos])
-            k--;
+        if(maxx!=str[pos])
+        k--;
             
-        for(int i=str.length()-1; i>=pos ;i--)
+        for(int i=str.size()-1; i>=pos;i--)
         {
-            if(str[i] == maxm)
+            if(str[i]==maxx)
             {
                 swap(str[i], str[pos]);
-                if(str.compare(max) > 0)
-                    max = str;
+                if(str.compare(ans) > 0)
+                ans=str;
                     
-                findMaxUtil(str, max, k, pos+1);
+                solve(str,ans, k, pos+1);
                 
                 swap(str[i], str[pos]);
             }
         }
     }
     
+    string findMaximumNum(string str, int k)
+    {
+       // code here.
+       string ans=str;
+       solve(str,ans,k,0);
+       return ans;
+    }
+};
