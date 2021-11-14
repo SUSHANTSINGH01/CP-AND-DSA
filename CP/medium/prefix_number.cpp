@@ -1,3 +1,5 @@
+// https://www.hackerearth.com/practice/algorithms/string-algorithm/z-algorithm/practice-problems/algorithm/prefix-number-f5c76976/
+
 #include<bits/stdc++.h>
 using namespace std;
 const int maxn=100005;
