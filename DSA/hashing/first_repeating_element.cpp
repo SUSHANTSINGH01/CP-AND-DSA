@@ -1,3 +1,5 @@
+// without hashing
+
 int Solution::solve(vector<int> &A) 
 {
     vector<pair<int,int>>vp;
@@ -29,3 +31,22 @@ int Solution::solve(vector<int> &A)
     }
     return val;
 }
+
+// using hashing
+
+int Solution::solve(vector<int> &A) 
+{
+    
+    int n=A.size();
+    unordered_map<int,int>mp;
+    if(n==1)
+    return -1;
+    for(int i=0;i<n;i++)
+    mp[A[i]]++;
+     
+    for(int i=0;i<n;i++)  
+    if(mp[A[i]]>1)
+    return A[i];
+    return -1;
+}
+
