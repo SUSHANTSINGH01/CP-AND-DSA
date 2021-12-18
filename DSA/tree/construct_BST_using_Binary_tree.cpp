@@ -1,5 +1,6 @@
 class Solution{
   public:
+  int i=0;
     void inorder(Node* root, vector<int>& v) 
     {
         if(root==0) 
@@ -13,15 +14,14 @@ class Solution{
          if(root==0) 
          return ;
          solve(root->left, v);
-         root->data=v.back();
-         v.pop_back();
+         root->data=v[i++];
          solve(root->right, v);
     }
     Node *binaryTreeToBST (Node *root)
     {
         vector<int>ans;
         inorder(root, ans);
-        sort(ans.begin(), ans.end(), greater<int>());
+        sort(ans.begin(), ans.end());
         solve(root, ans);
         return root;
     }
