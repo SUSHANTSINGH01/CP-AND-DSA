@@ -15,6 +15,24 @@ public:
     }
 };
 
+// second approach
+
+int Solution::singleNumber(const vector<int> &A)
+{
+    
+    unordered_map<int,int>mp;
+    int n=A.size();
+    
+    for(int i=0;i<n;i++)
+    mp[A[i]]++;
+      
+    for(auto it:mp)
+    if(it.second==1)
+    return it.first;
+
+    return 1;
+}
+
 // optimal solution 
 
 class Solution {
