@@ -1,3 +1,76 @@
+// leetcode
+
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) 
+    {
+        int s1=0;
+        int s2=0;
+        ListNode *a=headA;
+        ListNode *b=headB;
+        ListNode *res;
+        while(headA)
+        {
+            headA=headA->next;
+            s1++;
+        }
+        while(headB)
+        {
+            headB=headB->next;
+            s2++;
+        }
+        while(s1!=s2)
+        {
+            if(s1>s2)
+            {
+              a=a->next;
+              s1--;
+            }
+            else if(s2>s1)
+            {
+               b=b->next;
+                s2--;
+            }
+            else if(s1==s2)
+            break;
+        }
+        
+        int f=0;
+        while(b && a)
+        {
+            
+            if(b==a)
+            {
+                if(f==0)
+                {
+                    res=b;
+                    f=1;
+                }
+                b=b->next;
+                a=a->next;
+            }
+            else if(b->val!=a->val)
+            {
+                f=0;
+                b=b->next;
+                a=a->next;
+            }
+            else
+            {
+                 b=b->next;
+                 a=a->next;
+            }
+                
+        }
+        if(f==1)
+        return res;
+        return 0;
+        
+    }
+};
+
+// gfg
+
 #include<iostream>
 
 #include<bits/stdc++.h>
