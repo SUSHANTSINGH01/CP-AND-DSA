@@ -51,3 +51,37 @@ public:
         return ret;
     }
 };
+
+// optimized solution
+
+class Solution {
+public:
+    Node* flatten(Node* head) 
+    {
+        Node* cur=head;
+        
+        while(cur && !cur->child)
+        cur=cur->next;
+        
+        if(!cur)
+        return head;
+        
+        Node* temp=flatten(cur->next);
+        
+        Node* tmp=flatten(cur->child);
+        
+        cur->child = 0;
+        cur->next = tmp;
+        tmp->prev = cur;
+        
+        while(cur->next)
+        cur = cur->next;
+        
+        cur->next = temp;
+        
+        if(temp)
+        temp->prev = cur;
+        
+        return head;
+    }
+};
