@@ -11,7 +11,6 @@ public:
         int c=0;
         for(int i=0;i<n;i++)
         {
-            
             for(int j=0;j<m;j++)
             {
                 c=0;
@@ -41,8 +40,6 @@ public:
                 v[i][j]=0;
                 else
                 v[i][j]=board[i][j];
-                    //if(i==3 && j==2)
-                   // cout<<c<<"\n"<<v[i][j];
             }
         }
         for(int i=0;i<n;i++)
