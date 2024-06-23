@@ -1,3 +1,52 @@
+// 1st Solution
+
+class Solution {
+public:
+    ListNode* swapNodes(ListNode* head, int k) {
+        
+        int c=0;
+        
+        ListNode * start = head;
+        ListNode * newHead = head;
+        while(start){
+            start=start->next;
+            c++;
+        }
+
+        ListNode * kth;
+        int k1=0;
+        
+        if(k>((c+1)/2)){
+            if(((c+1)/2)!=0)
+            k=c-k+1;
+        }
+
+
+        while(k1<k-1){
+            head=head->next;
+            k1++;
+        }
+        kth=head;
+
+        while(k1<(c-k)){
+            head=head->next;
+            k1++;
+        }
+
+        int temp=head->val;
+        head->val=kth->val;
+        kth->val=temp;
+
+        return newHead;
+    }
+};
+
+
+
+// 2nd Solution
+
+
+
 class Solution {
 public:
     ListNode* swapNodes(ListNode* head, int k)
@@ -44,7 +93,7 @@ public:
         
 };
 
-// optimized
+// 3rd Solution
 
 /**
  * Definition for singly-linked list.
