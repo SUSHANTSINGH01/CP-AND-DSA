@@ -1,3 +1,6 @@
+// Optimized Solution
+
+
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -39,5 +42,41 @@ public:
             
         }
         return ans->next;
+    }
+};
+
+// Brute Force
+
+
+class Solution {
+public:
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+       
+        ListNode * start = new ListNode(0);
+        ListNode * head = start;
+        while(lists.size()){
+            int in=-1;
+            int minn=INT_MAX;
+            for(int j=0;j<lists.size();j++){
+                if(lists[j]!=NULL && lists[j]->val<=minn){
+                    in=j;
+                    minn=lists[j]->val;
+                }
+            }
+            if(in!=-1){
+                ListNode *temp = lists[in];
+                //lists.erase(lists.begin()+in);
+                head->next=temp;
+                head=head->next;
+                if(temp->next){
+                    lists[in]=temp->next;
+                }else{
+                    lists.erase(lists.begin()+in);
+                }
+
+            }else if(in==-1)
+            break;
+        }
+        return start->next;
     }
 };
