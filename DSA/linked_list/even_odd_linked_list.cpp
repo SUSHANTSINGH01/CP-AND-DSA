@@ -1,3 +1,47 @@
+// Optimized Solution
+
+
+
+class Solution {
+public:
+    ListNode* oddEvenList(ListNode* head) {
+        
+        bool f=0;
+        ListNode *odd=new ListNode(0);
+        ListNode *even=new ListNode(0);
+        ListNode *odd_head=odd;
+        ListNode *even_head=even;
+
+        while(head!=NULL) 
+        {
+            if(!f){
+                ListNode *temp=new ListNode(head->val);
+                odd->next=temp;        
+                odd=odd->next;
+                f=true;
+            }
+            else{
+                ListNode *temp=new ListNode(head->val);
+                even->next=temp;
+                even=even->next;
+                f=false;
+            }
+            head=head->next;
+        }
+    
+        odd->next=even_head->next;
+        even->next=NULL;
+        return odd_head->next;
+        
+    }
+};
+
+
+
+// Brute Force
+
+
+
 #include <bits/stdc++.h>
 using namespace std;
 
