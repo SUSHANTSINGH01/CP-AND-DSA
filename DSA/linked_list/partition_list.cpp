@@ -1,3 +1,78 @@
+// Optimized Solution
+
+class Solution {
+public:
+    ListNode* partition(ListNode* head, int x) {
+
+        ListNode *first_half = new ListNode(0);
+        ListNode *res = first_half;
+        ListNode *second_half = new ListNode(0);
+        ListNode *res_second = second_half;
+
+        while(head){
+            if(head->val<x){
+                first_half->next=new ListNode(head->val);
+                first_half=first_half->next;
+            }else{
+                second_half->next=new ListNode(head->val);
+                second_half=second_half->next;
+            }
+            head=head->next;
+        }
+        if(res_second->next!=NULL)
+        first_half->next=res_second->next;
+        return res->next;
+        
+    }
+};
+
+// Second Solution
+
+
+class Solution {
+public:
+    ListNode* partition(ListNode* head, int x) 
+    {
+        vector<int>vec;
+    
+        ListNode *temp=head;
+
+        while(temp)
+        {
+            vec.push_back(temp->val);
+            temp=temp->next;
+        }
+
+        ListNode *root=new ListNode(0);
+        int n=vec.size();
+        ListNode *start=root;
+        for(int i=0;i<n;i++)
+        {
+            if(vec[i]<x)
+            {
+                ListNode *add=new ListNode(vec[i]);
+                root->next=add;
+                root=root->next;
+            }
+
+        }
+         for(int i=0;i<n;i++)
+        {
+            if(vec[i]>=x)
+            {
+                ListNode *add=new ListNode(vec[i]);
+                root->next=add;
+                root=root->next;
+            }
+
+        }
+        return start->next;
+    }
+};
+
+
+// Third Solution
+
 
 class Solution {
 public:
