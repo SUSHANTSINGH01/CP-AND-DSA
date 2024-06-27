@@ -1,4 +1,4 @@
-void solve(queue<int> &q,int i,int n)
+void rev(queue<int> &q,int i,int n)
 {
     if(i==n) 
     return;
@@ -6,12 +6,13 @@ void solve(queue<int> &q,int i,int n)
     int val=q.front();
     q.pop();
     i++;
-    solve(q,i,n);
+    rev(q,i,n);
     q.push(val);
 }
 queue<int> modifyQueue(queue<int> q, int k) 
 {
-    solve(q,0,k);
+    // add code here.
+    rev(q,0,k);
     int n=q.size()-k;
     while(n--)
     {
@@ -19,6 +20,5 @@ queue<int> modifyQueue(queue<int> q, int k)
         q.pop();
         q.push(val);
     }
-    return q;
-    // add code here.
+    return q;  
 }
