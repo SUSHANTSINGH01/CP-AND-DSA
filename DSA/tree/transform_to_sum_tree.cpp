@@ -1,3 +1,36 @@
+
+
+// Optimized Solution
+
+
+class Solution {
+  public:
+  
+    // Convert a given tree to a tree where every node contains sum of values of
+    // nodes in left and right subtrees in the original tree
+    int sumTree(Node *node){
+        if(!node)
+        return 0;
+        
+        int sum=0;
+        if(node->left)
+        sum+=node->left->data+sumTree(node->left);
+        if(node->right)
+        sum+=node->right->data+sumTree(node->right);
+        
+        return node->data=sum;
+    }
+    void toSumTree(Node *node)
+    {
+        // Your code here
+        sumTree(node);
+    }
+};
+
+
+// Second Solution
+
+
 #include <bits/stdc++.h>
 using namespace std;
 
