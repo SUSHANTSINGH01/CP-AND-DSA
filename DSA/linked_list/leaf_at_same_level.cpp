@@ -1,3 +1,45 @@
+
+
+// Optimized Solution
+
+
+class Solution{
+  public:
+    /*You are required to complete this method*/
+    bool check(Node *root)
+    {
+        //Your code here
+        queue<pair<Node*,int>>q;
+        q.push({root,0});
+        int sameLevel=-1;
+        while(!q.empty()){
+            int n=q.size();
+            while(n--){
+                Node *temp = q.front().first;
+                int l = q.front().second;
+                q.pop();
+                
+                if(!temp->left && !temp->right){
+                    if(sameLevel==-1)
+                    sameLevel=l;
+                    else if(l!=sameLevel)
+                    return 0;
+                }
+                if(temp->left)
+                q.push({temp->left,l+1});
+                if(temp->right)
+                q.push({temp->right,l+1});
+            }
+           
+        }
+        return 1;
+    }
+};
+
+
+// Second Solution
+
+
 #include <bits/stdc++.h>
 using namespace std;
 
