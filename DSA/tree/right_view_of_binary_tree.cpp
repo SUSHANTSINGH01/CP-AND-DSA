@@ -1,3 +1,42 @@
+
+
+// Optimized Solution
+
+
+class Solution {
+public:
+    vector<int> rightSideView(TreeNode* root) {
+          
+        if(!root)
+        return {};
+        
+        vector<int>res;
+        queue<TreeNode*>q;
+        q.push(root);
+        while(!q.empty())
+        {
+            int n=q.size();
+            while(n)
+            {
+                TreeNode *temp=q.front();
+                q.pop();
+                if(temp->left)
+                q.push(temp->left);
+                if(temp->right)
+                q.push(temp->right);
+                if(n==1)
+                res.push_back(temp->val);
+                n--;
+            }
+        }
+        return res;
+    }
+};
+
+
+// Second Solution
+
+
 #include <bits/stdc++.h>
 using namespace std;
 
