@@ -1,3 +1,72 @@
+
+
+// Optimized Solution
+
+
+class Solution {
+public:
+    void makingAdjList(vector<int>adj[],TreeNode* root)
+    {
+        if(!root)
+        return;
+
+        if(root->left)
+        {
+            adj[root->val].push_back(root->left->val);
+            adj[root->left->val].push_back(root->val);
+            makingAdjList(adj,root->left);
+        }
+        if(root->right)
+        {
+            adj[root->val].push_back(root->right->val);
+            adj[root->right->val].push_back(root->val);
+            makingAdjList(adj,root->right);  
+        }
+    }
+
+    vector<int> findNodes(vector<int> adj[],int k,int targetValue,vector<int> res)
+    {
+        queue<pair<int,int>>q;
+        q.push({targetValue,0});
+        vector<int>vis(500,0);
+        vis[targetValue]=1;
+        while(!q.empty())
+        {
+            int node=q.front().first;
+            int c=q.front().second;
+
+            if(c==k)
+            res.push_back(node);
+
+            c++;
+            q.pop();
+            
+            for(int it:adj[node])
+            {
+                if(vis[it]!=1)
+                {
+                    vis[it]=1;
+                    q.push({it,c});
+                }
+            }
+
+            
+        }
+        return res;
+    }
+    vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
+        vector<int>adj[505];
+        vector<int>res;
+        makingAdjList(adj,root);
+        int targetValue=target->val;
+        return findNodes(adj,k,targetValue,res);
+    }
+};
+
+
+// Second Solution
+
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
