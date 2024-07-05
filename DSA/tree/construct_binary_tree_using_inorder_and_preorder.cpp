@@ -1,3 +1,36 @@
+
+
+// Optimized Solution
+
+
+class Solution {
+public:
+    unordered_map<int,int>mp;
+    TreeNode *buildNewTree(vector<int>& pre,int i, int j, int &ind){
+        if(ind==pre.size() || i>j)
+        return NULL;
+
+       
+        else{
+            int mid = mp[pre[ind]];
+            TreeNode * root = new TreeNode(pre[ind++]);
+            root->left = buildNewTree(pre,i,mid-1,ind);
+            root->right = buildNewTree(pre,mid+1,j,ind);
+            return root;
+        }
+    }
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        for(int i=0;i<inorder.size();i++)
+        mp[inorder[i]]=i;
+        int ind=0;
+        return buildNewTree(preorder, 0, inorder.size()-1, ind);
+    }
+};
+
+
+// Second Solution
+
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
