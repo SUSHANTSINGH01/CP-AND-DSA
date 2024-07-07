@@ -28,3 +28,42 @@ class Solution {
         return res;
     }
 };
+
+
+// Java Solution
+
+
+class Solution {
+    static class BooleanWrapper {
+        boolean flag;
+        BooleanWrapper(boolean flag) {
+            this.flag = flag;
+        }
+    }
+    public void solve(Node root, int target, ArrayList<Integer>res, BooleanWrapper f){
+        
+        if(root==null)
+        return ;
+        
+        if(root.data==target){
+            f.flag=true;
+            return ;
+        }
+        
+        if(!f.flag)
+        solve(root.left,target,res,f);
+        
+        if(!f.flag)
+        solve(root.right,target,res,f);
+        
+        if(f.flag)
+        res.add(root.data);
+    }
+    public ArrayList<Integer> Ancestors(Node root, int target) {
+        // add your code here
+        ArrayList<Integer>res = new ArrayList<>();
+        BooleanWrapper f=new BooleanWrapper(false);
+        solve(root,target,res,f);
+        return res;
+    }  
+}
