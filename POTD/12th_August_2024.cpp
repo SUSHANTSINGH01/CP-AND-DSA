@@ -32,3 +32,40 @@ class Solution {
         return arr2[n-1]+arr1[0];
     }
 };
+
+
+// Java Code
+
+
+class Solution {
+    public int SumofMiddleElements(int[] arr1, int[] arr2) {
+        // code here
+        
+        int n=arr1.length;
+        int l=0;
+        int r=n-1;
+        
+        while(l<r){
+            int m1=(r+l)/2;
+            int m2=n-m1-2;
+            
+            int a=arr1[m1];
+            int b=arr2[m2];
+            int c=arr2[m2+1];
+            int d=arr1[m1+1];
+            
+            if(a<=c && b<=d)
+            return Math.max(a,b)+Math.min(c,d);
+            
+            if(a<=c)
+            l=m1+1;
+            else
+            r=m1;
+        }
+        
+        if(arr1[n-1]<=arr2[0])
+        return arr1[n-1]+arr2[0];
+        
+        return arr2[n-1]+arr1[0];
+    }
+}
