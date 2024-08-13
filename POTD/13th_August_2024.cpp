@@ -25,3 +25,34 @@ class Solution {
         return res;
     }
 };
+
+
+// Java Code
+
+
+class Solution {
+    long floorSqrt(long n) {
+        // Your code here
+        if(n<=1)
+        return n;
+        long start=1;
+        long end=n;
+        long mid;
+        long res=-1;
+        
+        while(start<=end)
+        {
+            mid=(start+end)/2;
+            if(mid*mid==n)
+            return mid;
+            else if((mid*mid)>n)
+            end=mid-1;
+            else if((mid*mid)<n)
+            {
+                start=mid+1;
+                res=mid;
+            }
+        }
+        return res;
+    }
+}
