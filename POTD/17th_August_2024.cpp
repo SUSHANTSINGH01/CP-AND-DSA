@@ -36,3 +36,41 @@ class Solution {
         return res;
     }
 };
+
+
+// Java code
+
+
+class Solution {
+    public static long[] productExceptSelf(int nums[]) {
+        // code here
+        int n=nums.length;
+        int c=0;
+        long prod=1;
+        long[] res = new long[n];
+        
+        for(int i=0;i<n;i++){
+            if(nums[i]==0)
+            c++;
+            else
+            prod*=nums[i];
+            
+        }
+        
+        for(int i=0;i<n;i++){
+            if(c>=2)
+            res[i]=0;
+            else{
+                if(c==1){
+                    if(nums[i]!=0)
+                    res[i]=0;
+                    else
+                    res[i]=prod;
+                }else
+                res[i]=prod/nums[i];
+                
+            }
+        }
+        return res;
+    }
+}
