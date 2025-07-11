@@ -13,7 +13,7 @@ class Solution {
             if(n==1 || st.contains(word.substring(0,n-1)))
             {
                 st.add(word);
-                if(word.length()>res.length() || word.length()==n && word.compareTo(res)<0)
+                if(word.length()>res.length() || word.compareTo(res)<0)
                 res=word;
                 
             }
